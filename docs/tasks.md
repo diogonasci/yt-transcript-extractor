@@ -753,7 +753,7 @@ Objetivo: Gerar notas Markdown estruturadas no vault do Obsidian.
 
 ### Tarefa 4.1 — Implementar obsidian/frontmatter.py
 
-Status: `[ ]`
+Status: `[x]`
 
 **O que fazer:**
 
@@ -785,7 +785,7 @@ def update_frontmatter(content: str, updates: dict) -> str:
 
 ### Tarefa 4.2 — Implementar obsidian/vault.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.2
 
@@ -837,7 +837,7 @@ class Vault:
 
 ### Tarefa 4.3 — Implementar obsidian/video_note.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 4.1, 4.2, 1.3
 
@@ -875,7 +875,7 @@ Formato conforme secao 5 do PRD.
 
 ### Tarefa 4.4 — Implementar obsidian/concept_note.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 4.1, 4.2, 1.3
 
@@ -916,7 +916,7 @@ Formato conforme secao 6 do PRD.
 
 ### Tarefa 4.5 — Implementar obsidian/channel_note.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 4.1, 4.2
 
