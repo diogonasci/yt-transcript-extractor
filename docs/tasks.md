@@ -957,7 +957,7 @@ Objetivo: Integrar todas as etapas e implementar o comando `study ingest`.
 
 ### Tarefa 5.1 — Implementar comando `study ingest`
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: Fases 2, 3, 4
 
@@ -1007,7 +1007,7 @@ Implementar o pipeline completo que encadeia: transcricao → IA → Obsidian.
 
 ### Tarefa 5.2 — Implementar comando `study status`
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.5, 2.3
 
@@ -1042,7 +1042,7 @@ Pending AI processing:
 
 ### Tarefa 5.3 — Implementar comando `study config`
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.2
 
@@ -1075,7 +1075,7 @@ Data dir:        data/
 
 ### Tarefa 5.4 — Testes de integracao
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 5.1
 
@@ -1104,7 +1104,7 @@ Criar testes de integracao que validam o pipeline completo com mocks.
 
 ### Tarefa 5.5 — Criar .env.example e atualizar README
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 5.1
 

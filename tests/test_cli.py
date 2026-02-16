@@ -13,15 +13,21 @@ class TestCLI:
         assert result.exit_code == 0
         assert "YouTube" in result.output
 
-    def test_status(self):
-        result = runner.invoke(app, ["status"])
+    def test_status(self, tmp_path):
+        result = runner.invoke(app, ["status"], env={
+            "VAULT_PATH": str(tmp_path),
+            "DATA_DIR": str(tmp_path / "data"),
+        })
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output
+        assert "Transcripts:" in result.output
 
-    def test_config(self):
-        result = runner.invoke(app, ["config"])
+    def test_config(self, tmp_path):
+        result = runner.invoke(app, ["config"], env={
+            "VAULT_PATH": str(tmp_path),
+            "CLAUDE_BACKEND": "api",
+        })
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output
+        assert "Claude backend:" in result.output
 
 
 class TestIngestCLI:
@@ -32,17 +38,17 @@ class TestIngestCLI:
         assert "playlist" in result.output
         assert "channel" in result.output
 
-    def test_video_stub(self):
-        result = runner.invoke(app, ["ingest", "video", "https://example.com"])
+    def test_video_help(self):
+        result = runner.invoke(app, ["ingest", "video", "--help"])
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output
+        assert "backend" in result.output.lower() or "force" in result.output.lower()
 
-    def test_playlist_stub(self):
-        result = runner.invoke(app, ["ingest", "playlist", "https://example.com"])
+    def test_playlist_help(self):
+        result = runner.invoke(app, ["ingest", "playlist", "--help"])
         assert result.exit_code == 0
 
-    def test_channel_stub(self):
-        result = runner.invoke(app, ["ingest", "channel", "https://example.com"])
+    def test_channel_help(self):
+        result = runner.invoke(app, ["ingest", "channel", "--help"])
         assert result.exit_code == 0
 
 
