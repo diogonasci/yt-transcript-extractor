@@ -9,3 +9,5 @@ build/
 venv/
 transcripts/
 archive.txt
+data/
+.env

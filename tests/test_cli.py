@@ -1,65 +1,76 @@
-"""Tests for CLI argument parsing."""
+"""Tests for CLI commands using typer CliRunner."""
 
-import pytest
-from pathlib import Path
+from typer.testing import CliRunner
 
-from yt_transcript_extractor.cli import build_parser
-from yt_transcript_extractor.config import DEFAULT_ARCHIVE, DEFAULT_LANG, DEFAULT_OUTPUT_DIR
+from study.cli.main import app
+
+runner = CliRunner()
 
 
-class TestBuildParser:
-    def setup_method(self):
-        self.parser = build_parser()
+class TestCLI:
+    def test_help(self):
+        result = runner.invoke(app, ["--help"])
+        assert result.exit_code == 0
+        assert "YouTube" in result.output
 
-    def test_channel_mode(self):
-        args = self.parser.parse_args(["channel", "https://youtube.com/@test"])
-        assert args.mode == "channel"
-        assert args.url == "https://youtube.com/@test"
-        assert args.output == DEFAULT_OUTPUT_DIR
-        assert args.lang == DEFAULT_LANG
-        assert args.archive == DEFAULT_ARCHIVE
-        assert args.subtitle_format == "json3"
-        assert args.verbose is False
+    def test_status(self):
+        result = runner.invoke(app, ["status"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output
 
-    def test_channel_with_after(self):
-        args = self.parser.parse_args(
-            ["channel", "https://youtube.com/@test", "--after", "20240101"]
-        )
-        assert args.after == "20240101"
+    def test_config(self):
+        result = runner.invoke(app, ["config"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output
 
-    def test_playlist_mode_single(self):
-        args = self.parser.parse_args(["playlist", "https://youtube.com/playlist?list=XYZ"])
-        assert args.mode == "playlist"
-        assert args.urls == ["https://youtube.com/playlist?list=XYZ"]
 
-    def test_playlist_mode_multiple(self):
-        args = self.parser.parse_args(["playlist", "url1", "url2", "url3"])
-        assert args.urls == ["url1", "url2", "url3"]
+class TestIngestCLI:
+    def test_help(self):
+        result = runner.invoke(app, ["ingest", "--help"])
+        assert result.exit_code == 0
+        assert "video" in result.output
+        assert "playlist" in result.output
+        assert "channel" in result.output
 
-    def test_list_mode(self):
-        args = self.parser.parse_args(["list", "videos.txt"])
-        assert args.mode == "list"
-        assert args.file == Path("videos.txt")
+    def test_video_stub(self):
+        result = runner.invoke(app, ["ingest", "video", "https://example.com"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output
 
-    def test_custom_options(self):
-        args = self.parser.parse_args([
-            "channel", "https://youtube.com/@test",
-            "--output", "/tmp/out",
-            "--lang", "pt",
-            "--archive", "done.txt",
-            "--format", "srt",
-            "--verbose",
-        ])
-        assert args.output == Path("/tmp/out")
-        assert args.lang == "pt"
-        assert args.archive == Path("done.txt")
-        assert args.subtitle_format == "srt"
-        assert args.verbose is True
+    def test_playlist_stub(self):
+        result = runner.invoke(app, ["ingest", "playlist", "https://example.com"])
+        assert result.exit_code == 0
 
-    def test_no_mode_raises(self):
-        with pytest.raises(SystemExit):
-            self.parser.parse_args([])
+    def test_channel_stub(self):
+        result = runner.invoke(app, ["ingest", "channel", "https://example.com"])
+        assert result.exit_code == 0
 
-    def test_invalid_format_raises(self):
-        with pytest.raises(SystemExit):
-            self.parser.parse_args(["channel", "url", "--format", "invalid"])
+
+class TestTranscriptCLI:
+    def test_help(self):
+        result = runner.invoke(app, ["transcript", "--help"])
+        assert result.exit_code == 0
+        assert "video" in result.output
+        assert "playlist" in result.output
+        assert "channel" in result.output
+
+    def test_video_stub(self):
+        result = runner.invoke(app, ["transcript", "video", "https://example.com"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output
+
+
+class TestProcessCLI:
+    def test_help(self):
+        result = runner.invoke(app, ["process", "--help"])
+        assert result.exit_code == 0
+
+    def test_run_stub(self):
+        result = runner.invoke(app, ["process", "run", "abc123"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output
+
+    def test_run_all_stub(self):
+        result = runner.invoke(app, ["process", "run", "--all"])
+        assert result.exit_code == 0
+        assert "not implemented yet" in result.output

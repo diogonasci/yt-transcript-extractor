@@ -3,17 +3,23 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "yt-transcript-extractor"
-version = "0.1.0"
-description = "Extract transcripts from YouTube videos without downloading them"
-requires-python = ">=3.10"
-dependencies = ["yt-dlp>=2024.0"]
+name = "study-cli"
+version = "0.2.0"
+description = "YouTube -> Obsidian Knowledge Compiler"
+requires-python = ">=3.11"
+dependencies = [
+    "yt-dlp>=2024.0",
+    "typer>=0.9.0",
+    "anthropic>=0.40.0",
+    "python-dotenv>=1.0",
+    "pyyaml>=6.0",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
 
 [project.scripts]
-yt-transcript-extractor = "yt_transcript_extractor.cli:main"
+study = "study.cli.main:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]

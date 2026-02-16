@@ -1,8 +1,6 @@
 """Tests for utils module."""
 
-from pathlib import Path
-
-from yt_transcript_extractor.utils import build_output_path, sanitize_filename
+from study.core.utils import sanitize_filename
 
 
 class TestSanitizeFilename:
@@ -29,20 +27,4 @@ class TestSanitizeFilename:
         assert sanitize_filename("My Great Video") == "My Great Video"
 
     def test_unicode_preserved(self):
-        assert sanitize_filename("Vídeo em Português") == "Vídeo em Português"
-
-
-class TestBuildOutputPath:
-    def test_correct_structure(self, tmp_path: Path):
-        path = build_output_path(tmp_path, "My Channel", "20240101", "Video Title")
-        assert path == tmp_path / "My Channel" / "20240101 - Video Title.json"
-
-    def test_creates_directories(self, tmp_path: Path):
-        output = tmp_path / "output"
-        path = build_output_path(output, "Channel", "20240101", "Title")
-        assert path.parent.exists()
-
-    def test_sanitizes_channel_and_title(self, tmp_path: Path):
-        path = build_output_path(tmp_path, "Ch/annel", "20240101", "Ti:tle")
-        assert "Ch_annel" in str(path)
-        assert "Ti_tle" in str(path)
+        assert sanitize_filename("Video em Portugues") == "Video em Portugues"

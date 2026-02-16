@@ -70,7 +70,6 @@ SAMPLE_INFO_DICT = {
 
 @pytest.fixture
 def json3_file(tmp_path: Path) -> Path:
-    """Create a sample json3 subtitle file."""
     filepath = tmp_path / "test.json3"
     filepath.write_text(json.dumps(SAMPLE_JSON3), encoding="utf-8")
     return filepath
@@ -78,7 +77,6 @@ def json3_file(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def vtt_file(tmp_path: Path) -> Path:
-    """Create a sample VTT subtitle file."""
     filepath = tmp_path / "test.vtt"
     filepath.write_text(SAMPLE_VTT, encoding="utf-8")
     return filepath
@@ -86,7 +84,6 @@ def vtt_file(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def srt_file(tmp_path: Path) -> Path:
-    """Create a sample SRT subtitle file."""
     filepath = tmp_path / "test.srt"
     filepath.write_text(SAMPLE_SRT, encoding="utf-8")
     return filepath
