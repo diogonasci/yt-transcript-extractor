@@ -65,12 +65,11 @@ class TestProcessCLI:
         result = runner.invoke(app, ["process", "--help"])
         assert result.exit_code == 0
 
-    def test_run_stub(self):
+    def test_run_single(self):
         result = runner.invoke(app, ["process", "run", "abc123"])
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output
+        assert "abc123" in result.output
 
-    def test_run_all_stub(self):
+    def test_run_all(self):
         result = runner.invoke(app, ["process", "run", "--all"])
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output

@@ -511,7 +511,7 @@ Objetivo: Processar transcricoes com Claude para gerar TLDR, resumo e conceitos.
 
 ### Tarefa 3.1 — Implementar ai/base.py (interface abstrata)
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.3
 
@@ -545,7 +545,7 @@ class AIBackend(ABC):
 
 ### Tarefa 3.2 — Implementar ai/prompts.py
 
-Status: `[ ]`
+Status: `[x]`
 
 **O que fazer:**
 
@@ -584,7 +584,7 @@ Retorne APENAS o JSON valido, sem markdown code fences.
 
 ### Tarefa 3.3 — Implementar ai/schemas.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.3
 
@@ -621,7 +621,7 @@ def parse_ai_response(raw_text: str) -> AIResponse:
 
 ### Tarefa 3.4 — Implementar ai/api_backend.py (Anthropic API)
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 3.1, 3.2, 3.3
 
@@ -658,7 +658,7 @@ class AnthropicAPIBackend(AIBackend):
 
 ### Tarefa 3.5 — Implementar ai/cli_backend.py (Claude Code CLI)
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 3.1, 3.2, 3.3
 
@@ -693,7 +693,7 @@ class ClaudeCliBackend(AIBackend):
 
 ### Tarefa 3.6 — Implementar factory de backend e comando `study process`
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 3.4, 3.5, 1.5, 2.3
 
