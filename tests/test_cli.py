@@ -54,10 +54,10 @@ class TestTranscriptCLI:
         assert "playlist" in result.output
         assert "channel" in result.output
 
-    def test_video_stub(self):
-        result = runner.invoke(app, ["transcript", "video", "https://example.com"])
+    def test_video_help(self):
+        result = runner.invoke(app, ["transcript", "video", "--help"])
         assert result.exit_code == 0
-        assert "not implemented yet" in result.output
+        assert "url" in result.output.lower() or "URL" in result.output
 
 
 class TestProcessCLI:

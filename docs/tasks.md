@@ -346,7 +346,7 @@ Objetivo: Extrair transcricoes do YouTube e salvar como JSON em `data/transcript
 
 ### Tarefa 2.1 — Migrar extractor (downloader.py) para transcript/extractor.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: Fase 1
 
@@ -376,7 +376,7 @@ Mover a logica de extracao de `yt_transcript_extractor/downloader.py` para `stud
 
 ### Tarefa 2.2 — Migrar parser para transcript/parser.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: Fase 1
 
@@ -403,7 +403,7 @@ Mover `yt_transcript_extractor/parser.py` para `study/transcript/parser.py`.
 
 ### Tarefa 2.3 — Implementar transcript/storage.py
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.3, 2.2
 
@@ -463,7 +463,7 @@ Formato do JSON salvo:
 
 ### Tarefa 2.4 — Implementar comando `study transcript`
 
-Status: `[ ]`
+Status: `[x]`
 
 Depende de: 1.6, 2.1, 2.2, 2.3
 
