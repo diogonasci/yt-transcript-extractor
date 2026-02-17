@@ -155,7 +155,7 @@ def video(
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
     typer.echo(f"Ingesting video: {url}")
-    results = extract_transcripts([url], settings)
+    results = extract_transcripts([url], settings, state=state, force=force)
     counts = _run_pipeline(results, settings, storage, state, force, reprocess)
     _print_summary(counts)
 
@@ -185,7 +185,7 @@ def playlist(
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
     typer.echo(f"Ingesting playlist: {url}")
-    results = extract_playlist(url, settings)
+    results = extract_playlist(url, settings, state=state, force=force)
     counts = _run_pipeline(results, settings, storage, state, force, reprocess)
     _print_summary(counts)
 
@@ -215,6 +215,6 @@ def channel(
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
     typer.echo(f"Ingesting channel: {url}")
-    results = extract_channel(url, settings, after_date=after)
+    results = extract_channel(url, settings, after_date=after, state=state, force=force)
     counts = _run_pipeline(results, settings, storage, state, force, reprocess)
     _print_summary(counts)

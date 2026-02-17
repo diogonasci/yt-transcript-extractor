@@ -43,7 +43,7 @@ def video(
     storage = TranscriptStorage(settings.data_dir)
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
-    results = extract_transcripts([url], settings)
+    results = extract_transcripts([url], settings, state=state, force=force)
     saved, skipped = _save_results(results, storage, state, force)
 
     typer.echo(f"Done: {saved} saved, {skipped} skipped")
@@ -65,7 +65,7 @@ def playlist(
     storage = TranscriptStorage(settings.data_dir)
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
-    results = extract_playlist(url, settings)
+    results = extract_playlist(url, settings, state=state, force=force)
     saved, skipped = _save_results(results, storage, state, force)
 
     typer.echo(f"Done: {saved} saved, {skipped} skipped")
@@ -88,7 +88,7 @@ def channel(
     storage = TranscriptStorage(settings.data_dir)
     state = ProcessingStateManager(settings.data_dir / "processing_state.json")
 
-    results = extract_channel(url, settings, after_date=after)
+    results = extract_channel(url, settings, after_date=after, state=state, force=force)
     saved, skipped = _save_results(results, storage, state, force)
 
     typer.echo(f"Done: {saved} saved, {skipped} skipped")
